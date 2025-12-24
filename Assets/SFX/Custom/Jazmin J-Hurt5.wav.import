@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://projdb438g0b"
+path="res://.godot/imported/Jazmin J-Hurt5.wav-7da4efb85dba8f770b71b4f0067b5bdf.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Custom/Jazmin J-Hurt5.wav"
+dest_files=["res://.godot/imported/Jazmin J-Hurt5.wav-7da4efb85dba8f770b71b4f0067b5bdf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

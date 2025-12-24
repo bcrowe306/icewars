@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwvkag8rrd5oj"
+path="res://.godot/imported/Swoosh Attack4.mp3-695301ad58a13805ac18deb8fe03d852.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Custom/Swoosh Attack4.mp3"
+dest_files=["res://.godot/imported/Swoosh Attack4.mp3-695301ad58a13805ac18deb8fe03d852.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

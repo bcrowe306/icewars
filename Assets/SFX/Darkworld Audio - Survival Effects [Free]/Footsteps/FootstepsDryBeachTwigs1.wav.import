@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cfpd3a54p3mpo"
+path="res://.godot/imported/FootstepsDryBeachTwigs1.wav-ce78f7954b3bfe6ce1a1fc8592147a8a.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Darkworld Audio - Survival Effects [Free]/Footsteps/FootstepsDryBeachTwigs1.wav"
+dest_files=["res://.godot/imported/FootstepsDryBeachTwigs1.wav-ce78f7954b3bfe6ce1a1fc8592147a8a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

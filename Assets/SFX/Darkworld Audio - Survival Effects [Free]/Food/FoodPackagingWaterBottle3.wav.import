@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cjy6hnbda8rek"
+path="res://.godot/imported/FoodPackagingWaterBottle3.wav-d26a74f35e2ab35f6d4a5e7e6547e2dd.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Darkworld Audio - Survival Effects [Free]/Food/FoodPackagingWaterBottle3.wav"
+dest_files=["res://.godot/imported/FoodPackagingWaterBottle3.wav-d26a74f35e2ab35f6d4a5e7e6547e2dd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

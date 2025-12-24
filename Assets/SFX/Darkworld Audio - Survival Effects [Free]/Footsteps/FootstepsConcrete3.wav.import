@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d4n2qklfoqb6w"
+path="res://.godot/imported/FootstepsConcrete3.wav-1e3e7d39bc9f0004b7d1b90f43ffa54a.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Darkworld Audio - Survival Effects [Free]/Footsteps/FootstepsConcrete3.wav"
+dest_files=["res://.godot/imported/FootstepsConcrete3.wav-1e3e7d39bc9f0004b7d1b90f43ffa54a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

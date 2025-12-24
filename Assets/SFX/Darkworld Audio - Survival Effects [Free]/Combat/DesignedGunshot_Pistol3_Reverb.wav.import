@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://f2ax11teepdd"
+path="res://.godot/imported/DesignedGunshot_Pistol3_Reverb.wav-1e2e65b87c65a7e94154350b5ea97fc7.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Darkworld Audio - Survival Effects [Free]/Combat/DesignedGunshot_Pistol3_Reverb.wav"
+dest_files=["res://.godot/imported/DesignedGunshot_Pistol3_Reverb.wav-1e2e65b87c65a7e94154350b5ea97fc7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

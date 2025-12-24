@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://di3r64au3q872"
+path="res://.godot/imported/FootstepsWetGravelStones3.wav-0bd84945fc655219c5f00f9bee5ed6cb.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Darkworld Audio - Survival Effects [Free]/Footsteps/FootstepsWetGravelStones3.wav"
+dest_files=["res://.godot/imported/FootstepsWetGravelStones3.wav-0bd84945fc655219c5f00f9bee5ed6cb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

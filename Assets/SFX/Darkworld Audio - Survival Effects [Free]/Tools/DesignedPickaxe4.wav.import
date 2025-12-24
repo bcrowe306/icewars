@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7tjuliol8cku"
+path="res://.godot/imported/DesignedPickaxe4.wav-78498966de8894339a7f4bb08e8e15c1.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Darkworld Audio - Survival Effects [Free]/Tools/DesignedPickaxe4.wav"
+dest_files=["res://.godot/imported/DesignedPickaxe4.wav-78498966de8894339a7f4bb08e8e15c1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

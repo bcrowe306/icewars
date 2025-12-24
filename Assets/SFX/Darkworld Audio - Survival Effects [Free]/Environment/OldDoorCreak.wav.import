@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://fci0eknvj0if"
+path="res://.godot/imported/OldDoorCreak.wav-8025dcfbf1b07105e1aa1f5b2658a358.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Darkworld Audio - Survival Effects [Free]/Environment/OldDoorCreak.wav"
+dest_files=["res://.godot/imported/OldDoorCreak.wav-8025dcfbf1b07105e1aa1f5b2658a358.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

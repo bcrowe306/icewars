@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b5k5xdxatwdea"
+path="res://.godot/imported/Swoosh Attack1.wav-aeb23f660c212ab68f5110727e955a69.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Custom/Swoosh Attack1.wav"
+dest_files=["res://.godot/imported/Swoosh Attack1.wav-aeb23f660c212ab68f5110727e955a69.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

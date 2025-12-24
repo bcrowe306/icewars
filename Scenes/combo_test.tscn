@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://btm36qhcwlco1"]
+
+[ext_resource type="Script" uid="uid://d0u3glwbes1jf" path="res://Scripts/ComboInput.gd" id="1_e3t80"]
+
+[node name="ComboTest" type="Node2D"]
+
+[node name="ComboInput" type="Node2D" parent="."]
+script = ExtResource("1_e3t80")
+type = 2
+repeat_count = 1
+combo_seconds = null
+mode = null
+actions = Array[String](["DIR_UP", "ACTION_ATTACK1"])
+metadata/_custom_type_script = "uid://d0u3glwbes1jf"

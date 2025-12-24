@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://n238f8nh6qsv"
+path="res://.godot/imported/Charge Sound.wav-ddd9f5d5ded3aaca8dd61286a9cc5118.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Pig Sounds/Charge Sound.wav"
+dest_files=["res://.godot/imported/Charge Sound.wav-ddd9f5d5ded3aaca8dd61286a9cc5118.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

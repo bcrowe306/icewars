@@ -1,0 +1,55 @@
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://djpnpl2enx51h"]
+
+[ext_resource type="Texture2D" uid="uid://i8ci00pbw0q1" path="res://Assets/Graphics/Legacy-Fantasy - High Forest 2.3/Trees/Dark-Tree.png" id="1_uk38c"]
+[ext_resource type="Texture2D" uid="uid://uhlyqomi5eo4" path="res://Assets/Graphics/Legacy-Fantasy - High Forest 2.3/Trees/Golden-Tree.png" id="2_o6awi"]
+[ext_resource type="Texture2D" uid="uid://b8gdxt6rery7f" path="res://Assets/Graphics/Legacy-Fantasy - High Forest 2.3/Trees/Green-Tree.png" id="3_6j340"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o6awi"]
+texture = ExtResource("1_uk38c")
+0:24/size_in_atlas = Vector2i(7, 20)
+0:24/0 = 0
+0:45/size_in_atlas = Vector2i(6, 13)
+0:45/0 = 0
+0:58/size_in_atlas = Vector2i(6, 10)
+0:58/0 = 0
+0:68/size_in_atlas = Vector2i(5, 7)
+0:68/0 = 0
+0:0/size_in_atlas = Vector2i(7, 23)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6j340"]
+texture = ExtResource("2_o6awi")
+0:0/size_in_atlas = Vector2i(7, 23)
+0:0/0 = 0
+0:24/size_in_atlas = Vector2i(7, 20)
+0:24/0 = 0
+0:45/size_in_atlas = Vector2i(6, 13)
+0:45/0 = 0
+0:59/size_in_atlas = Vector2i(6, 9)
+0:59/0 = 0
+0:68/size_in_atlas = Vector2i(5, 7)
+0:68/0 = 0
+42:0/size_in_atlas = Vector2i(7, 23)
+42:0/0 = 0
+43:25/size_in_atlas = Vector2i(6, 19)
+43:25/0 = 0
+42:59/size_in_atlas = Vector2i(6, 9)
+42:59/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r11sv"]
+texture = ExtResource("3_6j340")
+0:0/size_in_atlas = Vector2i(7, 23)
+0:0/0 = 0
+0:24/size_in_atlas = Vector2i(7, 21)
+0:24/0 = 0
+0:45/size_in_atlas = Vector2i(6, 13)
+0:45/0 = 0
+0:58/size_in_atlas = Vector2i(6, 10)
+0:58/0 = 0
+0:68/size_in_atlas = Vector2i(6, 7)
+0:68/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_o6awi")
+sources/1 = SubResource("TileSetAtlasSource_6j340")
+sources/2 = SubResource("TileSetAtlasSource_r11sv")

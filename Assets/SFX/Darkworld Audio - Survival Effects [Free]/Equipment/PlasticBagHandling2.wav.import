@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://k6kvr3v7s1gp"
+path="res://.godot/imported/PlasticBagHandling2.wav-63653540016d6a8d83f67422e17eb32c.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Darkworld Audio - Survival Effects [Free]/Equipment/PlasticBagHandling2.wav"
+dest_files=["res://.godot/imported/PlasticBagHandling2.wav-63653540016d6a8d83f67422e17eb32c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

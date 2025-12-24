@@ -1,0 +1,38 @@
+# Schema
+
+Weapon:
+  Name: Sword
+  Attacks:
+	- Name: Attack1
+	  Damage: 10
+	  Knockback: 5
+	  Speed: 1.2
+	  Recovery: 0.5
+	  Sound: slash.wav
+	- Name: Attack2
+	  Damage: 15
+	  Knockback: 7
+	  Speed: 1.0
+	  Recovery: 0.4
+	  Sound: slash.wav
+
+Stats:
+  Health: 100
+  Stamina: 50
+  Strength: 20
+  MaxHealth: 100
+  Intelligence: 10
+
+
+Hitbox:
+  Width: 1.0
+  Height: 2.0
+  Depth: 0.5
+
+Hurtboxes:
+  - Name: Head
+	DamageMultiplier: 1.5
+  - Name: Body
+	DamageMultiplier: 1.0
+  - Name: Limbs
+	DamageMultiplier: 0.75
