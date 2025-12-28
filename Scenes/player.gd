@@ -6,6 +6,8 @@ class_name PlayerController
 @onready var dash_explosion: CPUParticles2D = $DashExplosion
 
 # Signals
+signal camera_shake(amount: float)
+signal attack_successful( attack: Attack)
 
 # Exported vars and resources
 @export var stats: Stats
@@ -47,7 +49,7 @@ func _canJump() -> bool:
 		return true
 	else:
 		var falling_time = sm.get_state("Fall").fall_counter.Count
-		if sm.state == "Fall":
+		if sm.state == "Fall" and sm.previous_state != "Jump":
 			if jump_count == 0:
 				return falling_time < CoyoteTime
 			else:
@@ -129,6 +131,12 @@ func _handleStomp(next: String) -> String:
 	else:
 		return next
 
+func _inputBackPressed():
+	if facing_direction:
+		return Input.is_action_pressed("DIR_LEFT")
+	else:
+		return Input.is_action_pressed("DIR_RIGHT")
+
 func _determineState():
 	var has_combo_input: bool = false
 	var has_input: bool = false
@@ -139,6 +147,14 @@ func _determineState():
 	if Input.is_action_pressed("DIR_UP") and Input.is_action_just_pressed("ACTION_ATTACK_1"):
 		next_state = "AirAttack"
 		has_combo_input = true
+		
+	if Input.is_action_pressed("ACTION_ATTACK_2") and Input.is_action_pressed("ACTION_KICK"):
+		has_combo_input = true
+		next_state = "IcewaveCharge"
+	else:
+		if sm.state == "IcewaveCharge":
+			has_combo_input = true
+			next_state = "Icewave"
 	
 	if has_combo_input:
 		sm.state = next_state
@@ -157,7 +173,7 @@ func _determineState():
 		has_input = true
 		
 	# Handle Stomp
-	if Input.is_action_pressed("DIR_DOWN") and not is_on_floor():
+	if Input.is_action_pressed("DIR_DOWN") and not is_on_floor() and sm.state == "Fall":
 		has_input = true
 		next_state = _handleStomp(next_state)
 	
@@ -165,6 +181,14 @@ func _determineState():
 	if Input.is_action_just_pressed("ACTION_ATTACK_1"):
 		has_input = true
 		next_state = _handleAttack()
+		
+	if Input.is_action_just_pressed("ACTION_ATTACK_2"):
+		has_input = true
+		next_state = "Attack2"
+	
+	if Input.is_action_just_pressed("ACTION_KICK"):
+		next_state = "BackflipAttack"
+		has_input = true
 	
 	if has_input:
 		sm.state = next_state
@@ -191,5 +215,35 @@ func _determineState():
 
 func _on_stomp_hit_box_hit_registered(target: Node) -> void:
 	jump_count = 0
-	doJump(false, 1.0) # Replace with function body.
+	doJump(false, 1.0)
 	
+
+
+func _on_attack_1_attack_successful_hit(attack: Attack, hit_vector: Vector2) -> void:
+	camera_shake.emit(attack.camera_shake)
+	attack_successful.emit(attack)
+
+
+func _on_attack_2_attack_successful_hit(attack: Attack, hit_vector: Vector2) -> void:
+	camera_shake.emit(attack.camera_shake)
+	attack_successful.emit(attack)
+
+
+func _on_attack_3_attack_successful_hit(attack: Attack, hit_vector: Vector2) -> void:
+	camera_shake.emit(attack.camera_shake)
+	attack_successful.emit(attack)
+
+
+func _on_stomp_attack_attack_successful_hit(attack: Attack, hit_vector: Vector2) -> void:
+	camera_shake.emit(attack.camera_shake)
+	attack_successful.emit(attack)
+
+
+func _on_jump_attack_attack_successful_hit(attack: Attack, hit_vector: Vector2) -> void:
+	camera_shake.emit(attack.camera_shake)
+	attack_successful.emit(attack)
+
+
+func _on_backflip_kick_attack_attack_successful_hit(attack: Attack, hit_vector: Vector2) -> void:
+	camera_shake.emit(attack.camera_shake)
+	attack_successful.emit(attack)

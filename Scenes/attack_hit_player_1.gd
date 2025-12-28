@@ -42,3 +42,9 @@ func _on_hit_box_hit_registered(target: Node) -> void:
 	playHitSound() 
 	attack_hit_thump.pitch_scale = randf_range(.9, 1.2)
 	attack_hit_thump.play()  
+
+
+func _on_backflip_hit_hit_registered(target: Node) -> void:
+	playHitSound() 
+	attack_hit_thump.pitch_scale = randf_range(.9, 1.2)
+	attack_hit_thump.play()   # Replace with function body.

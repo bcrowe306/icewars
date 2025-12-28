@@ -29,6 +29,7 @@ func _ready() -> void:
 	self.body_entered.connect(self._on_body_entered)
 	self.area_exited.connect(self._on_area_exited)
 	
+	
 	# Gather all collision shapes
 	_gather_collision_shapes()
 	
@@ -38,7 +39,7 @@ func _ready() -> void:
 	
 	# Get reference to parent Attack if it exists
 	var parent = get_parent()
-	if parent and parent.has_signal("attack_started"):
+	if parent is Attack and parent.has_signal("attack_started"):
 		parent_attack = parent
 		parent_attack.attack_started.connect(_on_attack_started)
 		parent_attack.attack_finished.connect(_on_attack_finished)
@@ -106,14 +107,14 @@ func _on_area_entered(area: Area2D) -> void:
 	if not parent_attack:
 		return
 	
-	
-	
 	# Call the take damage function of the HurtBox, passing the parent Attack
 	var hurtbox = area as HurtBox
 	if hurtbox and hurtbox.has_method("takeDamage") and hurtbox.monitoring:
 
 		# Register the hit
 		register_hit(area)
+		if parent_attack.has_signal("attack_successful_hit"):
+			parent_attack.attack_successful_hit.emit(parent_attack, hit_vector)
 		hurtbox.takeDamage(parent_attack, hit_vector)
 
 func _on_body_entered(body: Node2D) -> void:

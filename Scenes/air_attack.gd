@@ -21,7 +21,7 @@ func _update(_delta: float):
 	pass
 	
 func _exit(_next_state: String):
-	pass
+	jump_attack.finish_attack()
 	
 func state_guard(_next_state: String) -> bool:
 	if animated_sprite.animation == animation_name and animated_sprite.frame == 6:

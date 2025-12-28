@@ -38,3 +38,7 @@ func _on_attack_2_hitbox_hit_registered(target: Node) -> void:
 
 func _on_attack_3_hitbox_hit_registered(target: Node) -> void:
 	playAnimation()
+
+
+func _on_backflip_hit_hit_registered(target: Node) -> void:
+	playAnimation() # Replace with function body.

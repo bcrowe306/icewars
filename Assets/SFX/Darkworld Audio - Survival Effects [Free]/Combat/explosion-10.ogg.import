@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c7l8ks622h37"
+path="res://.godot/imported/explosion-10.ogg-9e169d9a7bfe7859c54f08019369da77.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/Darkworld Audio - Survival Effects [Free]/Combat/explosion-10.ogg"
+dest_files=["res://.godot/imported/explosion-10.ogg-9e169d9a7bfe7859c54f08019369da77.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

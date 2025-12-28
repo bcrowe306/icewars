@@ -13,9 +13,13 @@ var state: String = "":
 			if state_transition_guard(state, value):
 				change_state(state, value)
 				state_changed.emit(state, value)
+				previous_state = state
 				state = value
 
 # Called when the node enters the scene tree for the first time.
+
+var previous_state: String = ""
+
 func _ready() -> void:
 	state = default_state
 

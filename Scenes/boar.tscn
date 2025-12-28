@@ -1,4 +1,4 @@
-[gd_scene load_steps=249 format=3 uid="uid://db6ma1hsecgrg"]
+[gd_scene load_steps=248 format=3 uid="uid://db6ma1hsecgrg"]
 
 [ext_resource type="Script" uid="uid://dl6jnjqdvs1d4" path="res://Scenes/boar.gd" id="1_fq3jf"]
 [ext_resource type="Texture2D" uid="uid://e8ldix7andsk" path="res://Assets/Graphics/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Hit-Vanish/Hit-Sheet-White.png" id="2_sp3hi"]
@@ -188,11 +188,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ev3c"]
-radius = 15.0
-height = 62.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_t5ix8"]
-radius = 20.0
+radius = 19.0
+height = 60.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17jp5"]
 radius = 19.0263
@@ -1590,28 +1587,24 @@ animations = [{
 
 [node name="Boar" type="CharacterBody2D" node_paths=PackedStringArray("stats")]
 collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_fq3jf")
 stats = NodePath("BoarStats")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_5p5nm")
-animation = &"Hit"
-frame_progress = 0.0835599
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 11)
+position = Vector2(-2, 7)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_6ev3c")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 0)
-shape = SubResource("CircleShape2D_t5ix8")
-
 [node name="BoarStats" type="Node" parent="."]
 script = ExtResource("6_17jp5")
-max_health = 150.0
-health = 150.0
+max_health = 75.0
+health = 75.0
 stamina = 0.0
 armor_resiliency = 0.0
 metadata/_custom_type_script = "uid://buypytgt8ea"
@@ -1718,6 +1711,7 @@ target_position = Vector2(-35, 0)
 target_position = Vector2(35, 0)
 
 [node name="BoarStateLabel" type="Label" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -52.0
 offset_right = 20.0

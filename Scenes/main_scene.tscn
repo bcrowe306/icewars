@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://bmtqvndvdvfil"]
+[gd_scene load_steps=16 format=4 uid="uid://bmtqvndvdvfil"]
 
 [ext_resource type="Texture2D" uid="uid://cwrux0cxetteo" path="res://Assets/Graphics/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_6l7je"]
+[ext_resource type="Script" uid="uid://58aysbxwbvag" path="res://Scenes/main_scene.gd" id="1_76v2p"]
 [ext_resource type="Texture2D" uid="uid://o5lqtkt30wq5" path="res://Assets/Graphics/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="3_jv6wh"]
 [ext_resource type="TileSet" uid="uid://fvhkyeetv1c1" path="res://Scenes/level_tiles.tres" id="3_x6ack"]
 [ext_resource type="TileSet" uid="uid://djpnpl2enx51h" path="res://Scenes/Trees1.tres" id="4_x6ack"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://db6ma1hsecgrg" path="res://Scenes/boar.tscn" id="7_maf8m"]
 [ext_resource type="Script" uid="uid://bbj0n8pocvjri" path="res://Scenes/boar_spawner.gd" id="8_huasi"]
 [ext_resource type="Script" uid="uid://ck3tt6fxmcy8q" path="res://Scenes/main_camera.gd" id="9_m1efj"]
+[ext_resource type="Script" uid="uid://b80v63pi0fasa" path="res://Scenes/main_hitstop.gd" id="10_mai8y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv6wh"]
 texture = ExtResource("3_jv6wh")
@@ -45,6 +47,7 @@ texture = ExtResource("3_jv6wh")
 sources/0 = SubResource("TileSetAtlasSource_x6ack")
 
 [node name="MainScene" type="Node2D"]
+script = ExtResource("1_76v2p")
 
 [node name="Background" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0, 0)
@@ -131,4 +134,10 @@ drag_right_margin = 0.13
 drag_bottom_margin = 0.17
 script = ExtResource("9_m1efj")
 
+[node name="MainHitstop" type="Node" parent="."]
+script = ExtResource("10_mai8y")
+metadata/_custom_type_script = "uid://ddt0x4h01lv40"
+
 [connection signal="timeout" from="BoarSpawner/Timer" to="BoarSpawner" method="_on_timer_timeout"]
+[connection signal="attack_successful" from="CharacterBody2D" to="MainHitstop" method="_on_character_body_2d_attack_successful"]
+[connection signal="camera_shake" from="CharacterBody2D" to="CharacterBody2D/MainCamera" method="_on_character_body_2d_camera_shake"]

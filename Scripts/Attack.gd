@@ -9,6 +9,8 @@ signal attack_started
 ## Emitted when the attack has completed its recovery time.
 signal attack_finished
 
+signal attack_successful_hit(attack: Attack, hit_vector: Vector2)
+
 signal recovery_completed
 
 ## The name of this attack (e.g., "Jab", "Heavy Slash", "Fireball").
@@ -125,7 +127,7 @@ func play_attack_sounds() -> void:
 func _deactivate_hitboxes() -> void:
 	for hitbox in hitboxes:
 		if hitbox:
-			hitbox.monitoring = false
+			hitbox.set_deferred("monitoring", false)
 
 ## Called when the attack finishes its recovery period.
 func finish_attack() -> void:

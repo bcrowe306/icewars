@@ -15,4 +15,4 @@ func on_finished():
 func playAnimation():
 	visible = true
 	#var animation_name = animation_names[ randi_range(0,2)]
-	self.play("B")
+	self.play(animation_names[randi_range(0,2)])

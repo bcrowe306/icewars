@@ -18,6 +18,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 PigHitSounds="*res://Scripts/PigHitSounds.gd"
+CameraShakeManager2="*res://Scripts/CameraShakeManager2.gd"
+HitstopManager="*res://Scripts/HitstopManager.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [input]
 
