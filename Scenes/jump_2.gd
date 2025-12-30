@@ -34,5 +34,5 @@ func _on_player_animations_frame_changed() -> void:
 			jump_attack.do_attack(jump_attack.hit_vector)
 			attack_1_weapon_sound.pitch_scale =  randf_range(.95, 1.05)
 			attack_1_weapon_sound.play()
-		if animated_sprite.frame == 4:
+		if animated_sprite.frame >= 4:
 			jump_attack.finish_attack() 

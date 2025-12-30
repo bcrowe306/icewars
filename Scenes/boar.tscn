@@ -199,11 +199,11 @@ radius = 15.0
 height = 60.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pixix"]
-radius = 25.02
+radius = 23.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bttn"]
 radius = 15.0
-height = 72.0
+height = 70.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17jp5"]
 bg_color = Color(0.2, 0.2, 0.2, 1)
@@ -1597,6 +1597,7 @@ sprite_frames = SubResource("SpriteFrames_5p5nm")
 animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-2, 7)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_6ev3c")
@@ -1630,7 +1631,6 @@ shape = SubResource("CapsuleShape2D_xst6f")
 debug_color = Color(0.992116, 0, 0.256465, 0.42)
 
 [node name="CollisionAttack" type="Node2D" parent="."]
-visible = false
 script = ExtResource("8_17jp5")
 attack_name = "CollisionAttack"
 damage = 15.0
@@ -1643,7 +1643,7 @@ script = ExtResource("8_0bttn")
 metadata/_custom_type_script = "uid://dg3xmkc4ecvkh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionAttack/HitBox"]
-position = Vector2(-4, 0)
+position = Vector2(-4, 3)
 shape = SubResource("CircleShape2D_pixix")
 debug_color = Color(0.312073, 0.626351, 0, 0.42)
 
@@ -1693,7 +1693,7 @@ allow_all = false
 animated_sprite = NodePath("../../AnimatedSprite2D")
 animation_name = "Hit"
 use_state_guard_function = true
-timeout_duration = 0.25
+timeout_duration = 0.5
 metadata/_custom_type_script = "uid://b6784i8bvnb71"
 
 [node name="Dying" type="Node" parent="BoarStateMachine" node_paths=PackedStringArray("animated_sprite")]
