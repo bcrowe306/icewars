@@ -29,20 +29,26 @@ func _ready() -> void:
 	self.body_entered.connect(self._on_body_entered)
 	self.area_exited.connect(self._on_area_exited)
 	
-	
-	# Gather all collision shapes
-	_gather_collision_shapes()
-	
-	# Disable collision shapes by default
-	disable_hitbox()
-	_on_ready()
-	
 	# Get reference to parent Attack if it exists
 	var parent = get_parent()
 	if parent is Attack and parent.has_signal("attack_started"):
 		parent_attack = parent
 		parent_attack.attack_started.connect(_on_attack_started)
 		parent_attack.attack_finished.connect(_on_attack_finished)
+
+	
+	# Gather all collision shapes
+	_gather_collision_shapes()
+	
+	# Disable collision shapes by default
+	if parent_attack and parent_attack is Attack and parent_attack.auto_enable:
+		enable_hitbox()
+	else:
+		disable_hitbox()
+
+	_on_ready()
+	
+	
 
 func _process(_delta: float) -> void:
 	_on_process(_delta)

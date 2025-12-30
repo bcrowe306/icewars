@@ -81,9 +81,7 @@ var active: bool = false:
 func set_active(value: bool, state_name: String):
 	active = value
 	if active:
-		state_duration = 0.0
-		timer_counter = 0.0
-		timeout_finished = false
+		reset_counters()
 		_enter(state_name)
 	else:
 		_exit(state_name)
@@ -116,3 +114,8 @@ func reset_counters() -> void:
 	state_duration = 0.0
 	timer_counter = 0.0
 	timeout_finished = false
+
+func __re_enter():
+	active = true
+	reset_counters()
+	_enter(str(self))

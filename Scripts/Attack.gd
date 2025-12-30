@@ -16,6 +16,9 @@ signal recovery_completed
 ## The name of this attack (e.g., "Jab", "Heavy Slash", "Fireball").
 @export var attack_name: String = "Basic Attack"
 
+## If true, the attack automatically enables its hitboxes on ready.
+@export var auto_enable: bool = false
+
 ## The amount of damage this attack deals.
 @export_range(0.0, 1000.0, 0.5) var damage: float = 10.0
 

@@ -32,6 +32,8 @@ signal armor_enabled_changed(difference: int, new_value: bool)
 signal died
 
 
+## The name of this stats object
+@export var stats_name: String = "Default Stats"
 
 ## The maximum health value. When changed, current health is clamped to not exceed this value.
 @export var max_health: float = 100.0:

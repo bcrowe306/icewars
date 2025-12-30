@@ -67,6 +67,8 @@ func _process(delta: float) -> void:
 
 
 func _on_hit_registered(target: Node) -> void:
+	icewave_attack_2.finish_attack()
+	
 	CameraShakeManager2.apply_shake(icewave_attack_2.camera_shake)
 	HitstopManager.triggerHitstop(icewave_attack_2.hitstop)
 	wind_impact_anims.visible = true
@@ -81,6 +83,8 @@ func _on_queue_free_timer_timeout() -> void:
 func hit(success: bool = true):
 	trail_particles.emitting = false
 	is_hit = true
+	self.monitoring = false
+	collision_shape_2d_2.disabled = true
 	if queue_free_timer.is_stopped():
 		projectile_anims.visible = false
 		queue_free_timer.start()

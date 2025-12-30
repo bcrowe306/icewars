@@ -4,10 +4,12 @@ extends State
 @onready var blood_particles: CPUParticles2D = $"../../BloodParticles"
 @onready var boar_hit_sound_player: AudioStreamPlayer2D = $"../../BoarHitSoundPlayer"
 @onready var blood_splat_animations: AnimatedSprite2D = $"../../BloodSplatAnimations"
+@onready var collision_attack: Attack = $"../../CollisionAttack"
 
 
 
 func _enter(previous_state: String):
+	collision_attack.finish_attack()
 	animated_sprite.play(animation_name)
 	blood_splat_animations.playRandom()
 	hurt_box.monitoring = false

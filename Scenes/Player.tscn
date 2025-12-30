@@ -60,7 +60,6 @@
 [ext_resource type="Script" uid="uid://htq1spxgj68s" path="res://Scenes/stomp_particles.gd" id="51_3rw25"]
 [ext_resource type="Script" uid="uid://biro846y4jf5p" path="res://Scenes/dash_explosion.gd" id="51_o2sks"]
 [ext_resource type="Script" uid="uid://dv45irbymrny0" path="res://Scenes/player_stats.gd" id="52_tbv6f"]
-[ext_resource type="Script" uid="uid://cuja6gi4u4lcj" path="res://Scripts/HurtBox.gd" id="53_u4y2r"]
 [ext_resource type="Script" uid="uid://bc42j3yanpwu1" path="res://Scenes/player_progress_bar.gd" id="54_tbv6f"]
 [ext_resource type="Script" uid="uid://cfgx3iomdgvm5" path="res://Scripts/Attack.gd" id="55_fayk8"]
 [ext_resource type="Script" uid="uid://m5siba0rmdc2" path="res://Scenes/player_attack_1_hitbox.gd" id="56_fayk8"]
@@ -72,6 +71,7 @@
 [ext_resource type="Script" uid="uid://b00gabc8tsugp" path="res://Scenes/stomp_hit_box.gd" id="59_yrofn"]
 [ext_resource type="AudioStream" uid="uid://dlb640chqkhdb" path="res://Assets/SFX/BOUNCE Twang Spring Short 02.wav" id="60_yrofn"]
 [ext_resource type="Texture2D" uid="uid://dbl7tbdn2eovg" path="res://Assets/Graphics/WindEffects/Burst_Dust_White_v1_spritesheet.png" id="61_5gg6q"]
+[ext_resource type="Script" uid="uid://kxblnqgflfbk" path="res://Scenes/player_hurt_box.gd" id="61_opjds"]
 [ext_resource type="Script" uid="uid://050ulnxry5u2" path="res://Scenes/hit_dust_animation.gd" id="62_wenux"]
 [ext_resource type="Script" uid="uid://c4vlv5sk7pumr" path="res://Scenes/player_state_label.gd" id="63_vy33c"]
 [ext_resource type="Script" uid="uid://boewlkkos3c2n" path="res://Scenes/hit_dust_animation_air.gd" id="65_uytvf"]
@@ -1542,8 +1542,8 @@ _data = [Vector2(0.443182, 0.494382), 0.0, 0.0, 0, 0]
 point_count = 1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbv6f"]
-radius = 21.0
-height = 54.0
+radius = 20.0
+height = 50.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4y2r"]
 bg_color = Color(0.2, 0.2, 0.2, 1)
@@ -2609,6 +2609,7 @@ sm = NodePath("StateMachine")
 CoyoteTime = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_rocfp")
 
@@ -3006,18 +3007,20 @@ script = ExtResource("51_o2sks")
 
 [node name="PlayerStats" type="Node" parent="."]
 script = ExtResource("52_tbv6f")
+stats_name = "PlayerStats"
 acceleration = 1400.0
 metadata/_custom_type_script = "uid://buypytgt8ea"
 
-[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("statistics")]
+[node name="PlayerHurtBox" type="Area2D" parent="." node_paths=PackedStringArray("statistics")]
 position = Vector2(0, 2)
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("53_u4y2r")
+script = ExtResource("61_opjds")
+hurtbox_name = "Player"
 statistics = NodePath("../PlayerStats")
 metadata/_custom_type_script = "uid://cuja6gi4u4lcj"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
 shape = SubResource("CapsuleShape2D_tbv6f")
 debug_color = Color(1, 0.0126174, 0.0135548, 0.42)
 
@@ -3264,22 +3267,33 @@ script = ExtResource("84_f6yay")
 [connection signal="frame_changed" from="PlayerAnimations" to="StateMachine/BackflipAttack" method="_on_player_animations_frame_changed"]
 [connection signal="frame_changed" from="PlayerAnimations" to="StateMachine/Icewave" method="_on_player_animations_frame_changed"]
 [connection signal="frame_changed" from="PlayerAnimations" to="Footsteps" method="_on_player_animations_frame_changed"]
-[connection signal="attack_successful_hit" from="Attack1" to="." method="_on_attack_1_attack_successful_hit"]
+[connection signal="attack_finished" from="Attack1" to="PlayerHurtBox" method="_on_attack_finished"]
+[connection signal="attack_started" from="Attack1" to="PlayerHurtBox" method="_on_attack_started"]
 [connection signal="hit_registered" from="Attack1/PlayerAttack1Hitbox" to="AttackHitPlayer1" method="_on_player_attack_1_hitbox_hit_registered"]
 [connection signal="hit_registered" from="Attack1/PlayerAttack1Hitbox" to="HitDustAnimation" method="_on_player_attack_1_hitbox_hit_registered"]
+[connection signal="attack_finished" from="Attack2" to="PlayerHurtBox" method="_on_attack_finished"]
+[connection signal="attack_started" from="Attack2" to="PlayerHurtBox" method="_on_attack_started"]
 [connection signal="attack_successful_hit" from="Attack2" to="." method="_on_attack_2_attack_successful_hit"]
 [connection signal="hit_registered" from="Attack2/Attack2Hitbox" to="AttackHitPlayer1" method="_on_attack_2_hitbox_hit_registered"]
 [connection signal="hit_registered" from="Attack2/Attack2Hitbox" to="HitDustAnimation" method="_on_attack_2_hitbox_hit_registered"]
+[connection signal="attack_finished" from="Attack3" to="PlayerHurtBox" method="_on_attack_finished"]
+[connection signal="attack_started" from="Attack3" to="PlayerHurtBox" method="_on_attack_started"]
 [connection signal="attack_successful_hit" from="Attack3" to="." method="_on_attack_3_attack_successful_hit"]
 [connection signal="hit_registered" from="Attack3/Attack3Hitbox" to="AttackHitPlayer1" method="_on_attack_3_hitbox_hit_registered"]
 [connection signal="hit_registered" from="Attack3/Attack3Hitbox" to="HitDustAnimation" method="_on_attack_3_hitbox_hit_registered"]
+[connection signal="attack_finished" from="StompAttack" to="PlayerHurtBox" method="_on_attack_finished"]
+[connection signal="attack_started" from="StompAttack" to="PlayerHurtBox" method="_on_attack_started"]
 [connection signal="attack_successful_hit" from="StompAttack" to="." method="_on_stomp_attack_attack_successful_hit"]
 [connection signal="hit_registered" from="StompAttack/StompHitBox" to="." method="_on_stomp_hit_box_hit_registered"]
 [connection signal="hit_registered" from="StompAttack/StompHitBox" to="StompAttack/StompHitBox" method="_on_hit_registered"]
+[connection signal="attack_finished" from="JumpAttack" to="PlayerHurtBox" method="_on_attack_finished"]
+[connection signal="attack_started" from="JumpAttack" to="PlayerHurtBox" method="_on_attack_started"]
 [connection signal="attack_successful_hit" from="JumpAttack" to="." method="_on_jump_attack_attack_successful_hit"]
 [connection signal="hit_registered" from="JumpAttack/HitBox" to="AttackHitPlayer1" method="_on_hit_box_hit_registered"]
 [connection signal="hit_registered" from="JumpAttack/HitBox" to="HitDustAnimationAir" method="_on_hit_box_hit_registered"]
 [connection signal="animation_finished" from="WindFlury" to="WindFlury" method="_on_animation_finished"]
+[connection signal="attack_finished" from="BackflipKickAttack" to="PlayerHurtBox" method="_on_attack_finished"]
+[connection signal="attack_started" from="BackflipKickAttack" to="PlayerHurtBox" method="_on_attack_started"]
 [connection signal="attack_successful_hit" from="BackflipKickAttack" to="." method="_on_backflip_kick_attack_attack_successful_hit"]
 [connection signal="hit_registered" from="BackflipKickAttack/BackflipHit" to="AttackHitPlayer1" method="_on_backflip_hit_hit_registered"]
 [connection signal="hit_registered" from="BackflipKickAttack/BackflipHit" to="HitDustAnimation" method="_on_backflip_hit_hit_registered"]

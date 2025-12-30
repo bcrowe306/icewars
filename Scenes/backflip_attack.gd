@@ -24,5 +24,5 @@ func _on_player_animations_frame_changed() -> void:
 	if animated_sprite.animation == animation_name:
 		if animated_sprite.frame == 1:
 			backfilp_attack_sound.play()
-		if animated_sprite.frame == 3:
+		if animated_sprite.frame == 2:
 			backflip_kick_attack.do_attack(backflip_kick_attack.hit_vector) 

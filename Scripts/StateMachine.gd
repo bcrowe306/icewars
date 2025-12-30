@@ -1,7 +1,13 @@
 class_name StateMachine
 extends Node
 
+## Emitted when a state change occurs
 signal state_changed(current_state: String, next_state: String)
+
+## Emitted when a state is reentered
+signal state_reentered(state: String)
+
+## The default state to enter on ready
 @export var default_state: String = "Idle"
 
 var state: String = "":
@@ -15,6 +21,7 @@ var state: String = "":
 				state_changed.emit(state, value)
 				previous_state = state
 				state = value
+
 
 # Called when the node enters the scene tree for the first time.
 

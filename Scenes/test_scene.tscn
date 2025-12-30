@@ -68,7 +68,7 @@ offset_right = 18.0
 offset_bottom = -40.0
 
 [node name="Snail" parent="." node_paths=PackedStringArray("enter_right", "enter_left", "exit_right", "exit_left") instance=ExtResource("4_hb2xm")]
-position = Vector2(943, 586)
+position = Vector2(925, 589)
 enter_right = NodePath("EnterRight")
 enter_left = NodePath("EnterLeft")
 exit_right = NodePath("ExitRight")

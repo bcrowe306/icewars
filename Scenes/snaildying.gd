@@ -1,7 +1,9 @@
 extends State
+@onready var collide_attack: Attack = $"../../CollideAttack"
 
 
 func _enter(_previous_state: String):
+	collide_attack.finish_attack()
 	animated_sprite.play(animation_name)
 
 func _update(_delta: float):
