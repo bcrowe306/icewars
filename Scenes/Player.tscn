@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://3mh3j7cvvpta" path="res://Scenes/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://ccveosfb3f1fy" path="res://Assets/Graphics/Legacy-Fantasy - High Forest 2.3/Character/Dead/Dead-Sheet.png" id="3_yoq75"]
 [ext_resource type="Script" uid="uid://clyturl8n863q" path="res://Scenes/PlayerIdleState.gd" id="4_5ixxa"]
-[ext_resource type="Script" uid="uid://wxtrd853c6dy" path="res://Scenes/dust_particles.gd" id="5_867uf"]
+[ext_resource type="Script" path="res://Scenes/dust_particles.gd" id="5_867uf"]
 [ext_resource type="Texture2D" uid="uid://capm3jfapiwxu" path="res://Assets/PenguinSprites/Attack1_v2.png" id="5_fayk8"]
 [ext_resource type="Texture2D" uid="uid://ba2dswbgyubmt" path="res://Assets/PenguinSprites/Attack2.png" id="6_yrofn"]
 [ext_resource type="Texture2D" uid="uid://by540ro1eltgp" path="res://Assets/PenguinSprites/Attack3_v3.png" id="7_fayk8"]
@@ -35,7 +35,7 @@
 [ext_resource type="Script" uid="uid://d3cudw8tegmv6" path="res://Scenes/jump_2.gd" id="20_5v66d"]
 [ext_resource type="AudioStream" uid="uid://t2ojnwtvtugu" path="res://Assets/SFX/Cymatics - FX Essentials Impact 17.wav" id="21_wpo1r"]
 [ext_resource type="AudioStream" uid="uid://b15k5cq36kpwf" path="res://Assets/SFX/whoosh/whoosh_medium_04.wav" id="23_wosd6"]
-[ext_resource type="Script" uid="uid://c67t8m4dag3bm" path="res://Scenes/land_dust_anims.gd" id="24_6id3a"]
+[ext_resource type="Script" path="res://Scenes/land_dust_anims.gd" id="24_6id3a"]
 [ext_resource type="Script" uid="uid://c2jxkkve7a8xe" path="res://Scenes/attack_3.gd" id="24_70hv0"]
 [ext_resource type="AudioStream" uid="uid://b40evgxt1hnq0" path="res://Assets/SFX/Custom/SFX- Vox-Female-05.wav" id="24_lyrkg"]
 [ext_resource type="AudioStream" uid="uid://cp1rif4akmds6" path="res://Assets/SFX/whoosh/whoosh_shortest_03.wav" id="25_rxg2u"]
@@ -61,7 +61,7 @@
 [ext_resource type="Script" uid="uid://dfej1cje02rys" path="res://Scenes/dash_particles_1.gd" id="49_yf17c"]
 [ext_resource type="Script" uid="uid://cus6pbbdj7fkf" path="res://Scenes/dash_particles_2.gd" id="50_awd2i"]
 [ext_resource type="Script" uid="uid://htq1spxgj68s" path="res://Scenes/stomp_particles.gd" id="51_3rw25"]
-[ext_resource type="Script" uid="uid://d24lwnhqk7bvq" path="res://Scenes/player_hit_state.gd" id="51_867uf"]
+[ext_resource type="Script" path="res://Scenes/player_hit_state.gd" id="51_867uf"]
 [ext_resource type="Script" uid="uid://biro846y4jf5p" path="res://Scenes/dash_explosion.gd" id="51_o2sks"]
 [ext_resource type="Script" uid="uid://dv45irbymrny0" path="res://Scenes/player_stats.gd" id="52_tbv6f"]
 [ext_resource type="Script" uid="uid://cfgx3iomdgvm5" path="res://Scripts/Attack.gd" id="55_fayk8"]
@@ -74,7 +74,7 @@
 [ext_resource type="Script" uid="uid://b00gabc8tsugp" path="res://Scenes/stomp_hit_box.gd" id="59_yrofn"]
 [ext_resource type="AudioStream" uid="uid://dlb640chqkhdb" path="res://Assets/SFX/BOUNCE Twang Spring Short 02.wav" id="60_yrofn"]
 [ext_resource type="Texture2D" uid="uid://dbl7tbdn2eovg" path="res://Assets/Graphics/WindEffects/Burst_Dust_White_v1_spritesheet.png" id="61_5gg6q"]
-[ext_resource type="Script" path="res://Scenes/player_hurt_box.gd" id="61_opjds"]
+[ext_resource type="Script" uid="uid://kxblnqgflfbk" path="res://Scenes/player_hurt_box.gd" id="61_opjds"]
 [ext_resource type="Script" uid="uid://050ulnxry5u2" path="res://Scenes/hit_dust_animation.gd" id="62_wenux"]
 [ext_resource type="Script" uid="uid://c4vlv5sk7pumr" path="res://Scenes/player_state_label.gd" id="63_vy33c"]
 [ext_resource type="Script" uid="uid://boewlkkos3c2n" path="res://Scenes/hit_dust_animation_air.gd" id="65_uytvf"]
@@ -3106,11 +3106,11 @@ stream = ExtResource("49_opjds")
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite", "timer")]
 script = ExtResource("51_867uf")
 allow_all = false
-animated_sprite = NodePath("../../PlayerAnimations")
 animation_name = "Hit"
-timer = NodePath("RecoverTimer")
 use_state_guard_function = true
 timeout_duration = 0.4
+animated_sprite = NodePath("../../PlayerAnimations")
+timer = NodePath("RecoverTimer")
 metadata/_custom_type_script = "uid://b6784i8bvnb71"
 
 [node name="HitSoundPlayer2D" type="AudioStreamPlayer2D" parent="StateMachine/Hit"]

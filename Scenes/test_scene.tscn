@@ -32,6 +32,7 @@ position = Vector2(100, 594)
 
 [node name="Snail" parent="." instance=ExtResource("4_hb2xm")]
 position = Vector2(925, 589)
+scale = Vector2(1.5, 1.5)
 
 [node name="Snails" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_x033f")

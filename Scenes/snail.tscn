@@ -370,9 +370,9 @@ stream = ExtResource("9_q7q7l")
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("9_n2nmr")
 allow_all = false
-animated_sprite = NodePath("../../AnimatedSprite2D")
 animation_name = "Hit"
 use_state_guard_function = true
+animated_sprite = NodePath("../../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://b6784i8bvnb71"
 
 [node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
@@ -384,8 +384,8 @@ metadata/_custom_type_script = "uid://b6784i8bvnb71"
 [node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("11_a4bte")
 allow_all = false
-animated_sprite = NodePath("../../AnimatedSprite2D")
 animation_name = "Dying"
+animated_sprite = NodePath("../../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://b6784i8bvnb71"
 
 [node name="CollideAttack" type="Node2D" parent="."]

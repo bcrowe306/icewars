@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bmtqvndvdvfil"]
+[gd_scene load_steps=24 format=4 uid="uid://bmtqvndvdvfil"]
 
 [ext_resource type="Texture2D" uid="uid://cwrux0cxetteo" path="res://Assets/Graphics/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_6l7je"]
 [ext_resource type="Script" uid="uid://58aysbxwbvag" path="res://Scenes/main_scene.gd" id="1_76v2p"]
@@ -59,6 +59,12 @@ scenes/1/scene = ExtResource("13_ioaeq")
 
 [sub_resource type="TileSet" id="TileSet_lhp3t"]
 sources/0 = SubResource("TileSetScenesCollectionSource_7ewk0")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ioaeq"]
+bg_color = Color(0.18, 0.18, 0.18, 0.815686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ewk0"]
+bg_color = Color(0.308629, 0.707478, 1.92523e-07, 1)
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_76v2p")
@@ -158,6 +164,39 @@ tile_set = SubResource("TileSet_7ewk0")
 [node name="Bouncers" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AABcABMAAAAAAAAAAQBqAAsAAAAAAAAAAQBNAAsAAAAAAAAAAQA1ABgAAAAAAAAAAQA=")
 tile_set = SubResource("TileSet_lhp3t")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.52588e-05
+offset_top = 6.10352e-05
+offset_right = 40.0
+offset_bottom = 40.0001
+scale = Vector2(28.8037, 16.1949)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ioaeq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7ewk0")
+value = 50.0
+show_percentage = false
 
 [connection signal="timeout" from="BoarSpawner/Timer" to="BoarSpawner" method="_on_timer_timeout"]
 [connection signal="attack_successful" from="CharacterBody2D" to="MainHitstop" method="_on_character_body_2d_attack_successful"]
