@@ -12,7 +12,7 @@ func _ready() -> void:
 @onready var attack_2_weapon_sound: AudioStreamPlayer = $Attack2WeaponSound
 
 	
-func _enter(previous_state: String):
+func _enter(_previous_state: String):
 	self.audio_stream.pitch_scale = randf_range(.95, 1.05)
 	self.audio_stream.play()
 	attack_2_weapon_sound.pitch_scale = randf_range(.95, 1.05)

@@ -4,11 +4,11 @@ extends State
 const JUMP_WIND_SMALL = preload("res://Scenes/jump_wind_small.tscn")
 @onready var player_controller: PlayerController = $"../.."
 
-func _enter(previous_state: String):
+func _enter(_previous_state: String):
 	var new_jump_wind := JUMP_WIND_SMALL.instantiate()
 	new_jump_wind.position = player_controller.position
 	player_controller.get_parent().add_child(new_jump_wind)
-	new_jump_wind.visible
+	new_jump_wind.visible = true
 	new_jump_wind.play("default")
 	
 	self.audio_stream.pitch_scale = randf_range(.95, 1.05)

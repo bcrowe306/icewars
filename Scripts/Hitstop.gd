@@ -18,7 +18,8 @@ func _on_hitstop_timeout() -> void:
 
 func trigger_hitstop(weight: float) -> void:
 	if timer.is_stopped():
-		var clamped_duration = clamp(weight * MAX_HITSTOP_DURATION, 0.0, MAX_HITSTOP_DURATION)
-		Engine.time_scale = 0.0
-		timer.wait_time = clamped_duration
+		timer.wait_time = clampf(weight * MAX_HITSTOP_DURATION, 0.0, MAX_HITSTOP_DURATION)
 		timer.start()
+		Engine.time_scale = 0.1
+	else:
+		Engine.time_scale = 1.0

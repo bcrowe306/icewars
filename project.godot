@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 PigHitSounds="*res://Scripts/PigHitSounds.gd"
 CameraShakeManager2="*res://Scripts/CameraShakeManager2.gd"
 HitstopManager="*res://Scripts/HitstopManager.gd"
+SnailHitSounds="*res://Scripts/SnailHitSounds.gd"
+PlayerHitSounds="*res://Scripts/player_hit_sounds.gd"
 
 [display]
 
@@ -98,3 +100,9 @@ ACTION_USE={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Objects"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

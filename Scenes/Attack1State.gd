@@ -14,7 +14,7 @@ func _exit(_next_state: String):
 	attack_1_smear.visible = false
 	attack_1.finish_attack()
 
-func _enter(previous_state: String):
+func _enter(_previous_state: String):
 	self.audio_stream.pitch_scale = randf_range(.95, 1.05)
 	self.audio_stream.play()
 	attack_1_weapon_sound.pitch_scale =  randf_range(.95, 1.05)

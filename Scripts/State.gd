@@ -3,6 +3,7 @@ extends Node
 ## State base class for use in StateMachine
 class_name State
 
+## Indicates if the timeout has finished
 var timeout_finished: bool = false
 
 signal timeout_reached()

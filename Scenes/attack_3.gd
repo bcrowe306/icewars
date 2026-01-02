@@ -14,7 +14,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func _enter(previous_state: String):
+func _enter(_previous_state: String):
 	animated_sprite.speed_scale = 1
 	animated_sprite.offset = Vector2(0,0)
 	if abs(player_controller.velocity.x) > 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bhlyvncxchhkc"]
+[gd_scene load_steps=56 format=3 uid="uid://bhlyvncxchhkc"]
 
 [ext_resource type="Texture2D" uid="uid://p8ybefwhu6e5" path="res://Assets/Graphics/Legacy-Fantasy - High Forest 2.3/Mob/Snail/all.png" id="1_nsjvy"]
 [ext_resource type="Script" uid="uid://c7d5lis4aa5le" path="res://Scenes/snail.gd" id="1_qjijy"]
@@ -9,13 +9,15 @@
 [ext_resource type="Script" uid="uid://b48fc30na3kih" path="res://Scenes/snailidle.gd" id="7_qdrdu"]
 [ext_resource type="Script" uid="uid://c0g112q4u5mkd" path="res://Scenes/snailcrawl.gd" id="8_vib7w"]
 [ext_resource type="Script" uid="uid://xh5ltf2rbkt8" path="res://Scenes/snailhit.gd" id="9_n2nmr"]
+[ext_resource type="AudioStream" uid="uid://cxnx5pnnnnu87" path="res://Assets/SFX/SnailSFX/FootstepsSlushSnow1.wav" id="9_q7q7l"]
 [ext_resource type="Script" uid="uid://c2lbbofb20lqu" path="res://Scenes/snailattack.gd" id="10_a4bte"]
 [ext_resource type="Script" uid="uid://duqguned4uuxw" path="res://Scenes/snaildying.gd" id="11_a4bte"]
 [ext_resource type="Script" uid="uid://cfgx3iomdgvm5" path="res://Scripts/Attack.gd" id="12_7rcfg"]
 [ext_resource type="Script" uid="uid://dg3xmkc4ecvkh" path="res://Scripts/HitBox.gd" id="13_q7q7l"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak5v8"]
-size = Vector2(28, 22.6667)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q7q7l"]
+radius = 11.8182
+height = 32.7273
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x033f"]
 atlas = ExtResource("1_nsjvy")
@@ -289,7 +291,7 @@ animations = [{
 size = Vector2(26.9663, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvj1i"]
-size = Vector2(33.3333, 26.6667)
+size = Vector2(36.3636, 26.6667)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rcfg"]
 bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.313726)
@@ -297,24 +299,29 @@ bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.313726)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7q7l"]
 bg_color = Color(0, 0.68, 0.34, 1)
 
-[node name="Snail" type="CharacterBody2D" node_paths=PackedStringArray("floor_right", "floor_left")]
-scale = Vector2(1.5, 1.5)
+[node name="Snail" type="CharacterBody2D" node_paths=PackedStringArray("enter_right", "enter_left", "exit_right", "exit_left", "floor_right", "floor_left")]
+scale = Vector2(1.1, 1.1)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_qjijy")
+enter_right = NodePath("CloseRangeRight")
+enter_left = NodePath("CloseRangeLeft")
+exit_right = NodePath("MidRangeRight")
+exit_left = NodePath("MidRangeLeft")
 floor_right = NodePath("FloorRight")
 floor_left = NodePath("FloorLeft")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 4.66667)
-shape = SubResource("RectangleShape2D_ak5v8")
+position = Vector2(-1.11318e-14, 3.63636)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_q7q7l")
+
+[node name="SnailSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tnimv")
-animation = &"Hit"
-frame = 15
-frame_progress = 1.0
+animation = &"Crawl"
+frame_progress = 0.384515
 
 [node name="SnailHurtBox" type="Area2D" parent="." node_paths=PackedStringArray("statistics")]
 visible = false
@@ -357,6 +364,9 @@ animated_sprite = NodePath("../../AnimatedSprite2D")
 animation_name = "Crawl"
 metadata/_custom_type_script = "uid://b6784i8bvnb71"
 
+[node name="CrawlSound" type="AudioStreamPlayer2D" parent="StateMachine/Crawl"]
+stream = ExtResource("9_q7q7l")
+
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("9_n2nmr")
 allow_all = false
@@ -373,6 +383,7 @@ metadata/_custom_type_script = "uid://b6784i8bvnb71"
 
 [node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("11_a4bte")
+allow_all = false
 animated_sprite = NodePath("../../AnimatedSprite2D")
 animation_name = "Dying"
 metadata/_custom_type_script = "uid://b6784i8bvnb71"
@@ -380,7 +391,6 @@ metadata/_custom_type_script = "uid://b6784i8bvnb71"
 [node name="CollideAttack" type="Node2D" parent="."]
 script = ExtResource("12_7rcfg")
 auto_enable = true
-damage = 20.0
 knockback = 0.2
 metadata/_custom_type_script = "uid://cfgx3iomdgvm5"
 
@@ -391,7 +401,7 @@ script = ExtResource("13_q7q7l")
 metadata/_custom_type_script = "uid://dg3xmkc4ecvkh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollideAttack/HitBox"]
-position = Vector2(7.94729e-07, 3.33333)
+position = Vector2(7.58605e-07, 2.72727)
 shape = SubResource("RectangleShape2D_mvj1i")
 debug_color = Color(0.204465, 0.640625, 1.92523e-07, 0.42)
 
@@ -414,4 +424,22 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_q7q7l")
 value = 50.0
 show_percentage = false
 
+[node name="MidRangeLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-300, 0)
+collision_mask = 2
+
+[node name="MidRangeRight" type="RayCast2D" parent="."]
+target_position = Vector2(300, 0)
+collision_mask = 2
+
+[node name="CloseRangeLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-200, 0)
+collision_mask = 2
+
+[node name="CloseRangeRight" type="RayCast2D" parent="."]
+target_position = Vector2(200, 0)
+collision_mask = 2
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="StateMachine/Crawl" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="damaged" from="SnailHurtBox" to="." method="_on_hurt_box_damaged"]

@@ -1633,7 +1633,6 @@ debug_color = Color(0.992116, 0, 0.256465, 0.42)
 [node name="CollisionAttack" type="Node2D" parent="."]
 script = ExtResource("8_17jp5")
 attack_name = "CollisionAttack"
-damage = 15.0
 metadata/_custom_type_script = "uid://cfgx3iomdgvm5"
 
 [node name="HitBox" type="Area2D" parent="CollisionAttack"]

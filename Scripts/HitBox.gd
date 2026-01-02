@@ -64,13 +64,13 @@ func _gather_collision_shapes() -> void:
 func enable_hitbox() -> void:
 	for shape in collision_shapes:
 		if shape:
-			shape.disabled = false
+			shape.set_deferred("disabled", false)
 
 ## Disables all child CollisionShape2D nodes, making the hitbox inactive.
 func disable_hitbox() -> void:
 	for shape in collision_shapes:
 		if shape:
-			shape.disabled = true
+			shape.set_deferred("disabled", true)
 
 ## Clears the hit log when a new attack starts and enables the hitbox.
 func _on_attack_started() -> void:

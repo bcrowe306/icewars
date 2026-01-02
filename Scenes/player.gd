@@ -31,7 +31,7 @@ var facing_direction: bool = true
 var gravity_multiplier: float = 1
 var jump_count: int = 0
 
-# Private member vars
+
 
 func _physics_process(delta: float) -> void:
 	_handleGravity(delta)
@@ -213,37 +213,40 @@ func _determineState():
 	sm.state = next_state
 
 
-func _on_stomp_hit_box_hit_registered(target: Node) -> void:
+func _on_stomp_hit_box_hit_registered(_target: Node) -> void:
 	jump_count = 0
 	doJump(false, 1.0)
-	
 
-
-func _on_attack_1_attack_successful_hit(attack: Attack, hit_vector: Vector2) -> void:
+func _on_attack_1_attack_successful_hit(attack: Attack, _hit_vector: Vector2) -> void:
 	camera_shake.emit(attack.camera_shake)
 	attack_successful.emit(attack)
 
 
-func _on_attack_2_attack_successful_hit(attack: Attack, hit_vector: Vector2) -> void:
+func _on_attack_2_attack_successful_hit(attack: Attack, _hit_vector: Vector2) -> void:
 	camera_shake.emit(attack.camera_shake)
 	attack_successful.emit(attack)
 
 
-func _on_attack_3_attack_successful_hit(attack: Attack, hit_vector: Vector2) -> void:
+func _on_attack_3_attack_successful_hit(attack: Attack, _hit_vector: Vector2) -> void:
 	camera_shake.emit(attack.camera_shake)
 	attack_successful.emit(attack)
 
 
-func _on_stomp_attack_attack_successful_hit(attack: Attack, hit_vector: Vector2) -> void:
+func _on_stomp_attack_attack_successful_hit(attack: Attack, _hit_vector: Vector2) -> void:
 	camera_shake.emit(attack.camera_shake)
 	attack_successful.emit(attack)
 
 
-func _on_jump_attack_attack_successful_hit(attack: Attack, hit_vector: Vector2) -> void:
+func _on_jump_attack_attack_successful_hit(attack: Attack, _hit_vector: Vector2) -> void:
 	camera_shake.emit(attack.camera_shake)
 	attack_successful.emit(attack)
 
 
-func _on_backflip_kick_attack_attack_successful_hit(attack: Attack, hit_vector: Vector2) -> void:
+func _on_backflip_kick_attack_attack_successful_hit(attack: Attack, _hit_vector: Vector2) -> void:
 	camera_shake.emit(attack.camera_shake)
 	attack_successful.emit(attack)
+
+
+func _on_player_hurt_box_damaged(attack: Attack, _hit_vector: Vector2, _amount: float, _new_health: float) -> void:
+	HitstopManager.triggerHitstop(attack.hitstop)
+	sm.state = "Hit" # Replace with function body.

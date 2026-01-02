@@ -4,9 +4,6 @@ extends Node
 ## Emitted when a state change occurs
 signal state_changed(current_state: String, next_state: String)
 
-## Emitted when a state is reentered
-signal state_reentered(state: String)
-
 ## The default state to enter on ready
 @export var default_state: String = "Idle"
 

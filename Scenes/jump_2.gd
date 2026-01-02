@@ -9,7 +9,7 @@ const JUMP_WIND_1 = preload("res://Scenes/jump_wind_1.tscn")
 @onready var jump_attack: Attack = $"../../JumpAttack"
 @onready var attack_1_weapon_sound: AudioStreamPlayer = $"../Attack1/Attack1WeaponSound"
 
-func _enter(previous_state: String):
+func _enter(_previous_state: String):
 	var new_wind := JUMP_WIND_1.instantiate()
 	new_wind.position = player_controller.position
 	player_controller.get_parent().add_child(new_wind)

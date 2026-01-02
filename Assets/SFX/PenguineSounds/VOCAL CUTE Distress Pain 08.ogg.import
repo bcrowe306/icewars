@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://g861e8tr5bgi"
+path="res://.godot/imported/VOCAL CUTE Distress Pain 08.ogg-5c08ffde1ce57f7b038bbb7a42ce3a1f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/PenguineSounds/VOCAL CUTE Distress Pain 08.ogg"
+dest_files=["res://.godot/imported/VOCAL CUTE Distress Pain 08.ogg-5c08ffde1ce57f7b038bbb7a42ce3a1f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

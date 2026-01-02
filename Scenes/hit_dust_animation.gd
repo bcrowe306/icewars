@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player_controller.facing_direction != direction:
 		if player_controller.facing_direction:
 			position.x = abs(position.x)
@@ -28,17 +28,17 @@ func on_finished():
 	visible = false
 
 
-func _on_player_attack_1_hitbox_hit_registered(target: Node) -> void:
+func _on_player_attack_1_hitbox_hit_registered(_target: Node) -> void:
 	playAnimation() 
 
 
-func _on_attack_2_hitbox_hit_registered(target: Node) -> void:
+func _on_attack_2_hitbox_hit_registered(_target: Node) -> void:
 	playAnimation() 
 
 
-func _on_attack_3_hitbox_hit_registered(target: Node) -> void:
+func _on_attack_3_hitbox_hit_registered(_target: Node) -> void:
 	playAnimation()
 
 
-func _on_backflip_hit_hit_registered(target: Node) -> void:
+func _on_backflip_hit_hit_registered(_target: Node) -> void:
 	playAnimation() # Replace with function body.

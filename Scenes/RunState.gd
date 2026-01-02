@@ -10,11 +10,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 	
-func _enter(previous_state: String):
+func _enter(_previous_state: String):
 	animated_sprite.offset = Vector2(-5,0)
 	animated_sprite.play(animation_name)
 
-func _update(delta: float):
+func _update(_delta: float):
 	var velocity_percentage: float = player_controller.getVelocityPercentage()
 	var current_animation := animation_name
 	if velocity_percentage < .5:

@@ -5,10 +5,5 @@ class_name JumpWind
 func _ready() -> void:
 	animation_finished.connect(self._on_finished) # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_finished():
 	queue_free()

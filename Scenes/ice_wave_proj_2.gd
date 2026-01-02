@@ -57,16 +57,18 @@ func _process(delta: float) -> void:
 	if not is_hit:
 		position.x += SPEED * delta * direction.x 
 	
-	var bodies := get_overlapping_bodies()
-	var areas := get_overlapping_areas()
-	if not bodies.is_empty():
-		hit()
+	if monitoring:
+		var bodies := get_overlapping_bodies()
+		var areas := get_overlapping_areas()
 		
-	if not areas.is_empty():
-		hit()
+		if not bodies.is_empty():
+			hit()
+			
+		if not areas.is_empty():
+			hit()
 
 
-func _on_hit_registered(target: Node) -> void:
+func _on_hit_registered(_target: Node) -> void:
 	icewave_attack_2.finish_attack()
 	
 	CameraShakeManager2.apply_shake(icewave_attack_2.camera_shake)
@@ -80,7 +82,7 @@ func _on_queue_free_timer_timeout() -> void:
 	queue_free() # Replace with function body.
 	
 
-func hit(success: bool = true):
+func hit(_success: bool = true):
 	trail_particles.emitting = false
 	is_hit = true
 	self.monitoring = false

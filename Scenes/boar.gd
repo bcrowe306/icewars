@@ -70,7 +70,7 @@ func determineState():
 	
 
 
-func _on_hurt_box_damaged(attack: Attack, hit_vector: Vector2, amount: float, new_health: float) -> void:
+func _on_hurt_box_damaged(_attack: Attack, _hit_vector: Vector2, _amount: float, new_health: float) -> void:
 	if new_health > 0.0:
 		if sm.state == "Hit":
 			var hitstate := sm.get_state("Hit")

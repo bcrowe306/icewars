@@ -8,7 +8,7 @@ extends State
 
 
 
-func _enter(previous_state: String):
+func _enter(_previous_state: String):
 	collision_attack.finish_attack()
 	animated_sprite.play(animation_name)
 	blood_splat_animations.playRandom()

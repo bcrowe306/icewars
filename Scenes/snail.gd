@@ -1,4 +1,6 @@
 extends CharacterBody2D
+class_name Snail
+
 enum opponent_states {
 	OUT_OF_RANGE,
 	CLOSE_RANGE,
@@ -18,9 +20,9 @@ var opp_state: opponent_states = opponent_states.OUT_OF_RANGE
 @onready var collide_attack: Attack = $CollideAttack
 
 
-const MAX_SPEED = 75.0
+const MAX_SPEED = 150.0
 const JUMP_VELOCITY = -400.0
-var acceleration: float = 200.0
+var acceleration: float = 300.0
 var decceleration: float = 900.0
 var direction: float = 0
 var MAX_KNOCKBACK_VELOCITY: float = 1000.0
@@ -58,7 +60,7 @@ func _physics_process(delta: float) -> void:
 	update_health_bar()
 	
 	determine_opponent_state()
-	snail_label.text = opponent_states.keys()[opp_state]
+	snail_label.text = sm.state
 	if direction > 0:
 		animated_sprite_2d.flip_h = true
 	if direction < 0:
@@ -71,14 +73,23 @@ func _physics_process(delta: float) -> void:
 		
 	else:
 		if direction:
+			
+			# Clamp velocity to max speed in either direction
 			if velocity.x > MAX_SPEED:
 				velocity.x -= decceleration * delta
 			
 			elif velocity.x < -MAX_SPEED:
 				velocity.x += decceleration * delta
 				
+			# This is the case where we actually move the enitity
 			else:
-				velocity.x += acceleration * direction * delta
+				
+				# Only move in desired direction on certain states:
+				if sm.state != "Dying":
+					velocity.x += acceleration * direction * delta
+				else:
+					velocity.x = 0
+		# Direction is zero, meaning the NPC doesn't want to move in any direction. Decceleration logic here
 		else:
 			if velocity.x > 0:
 				velocity.x = maxf(velocity.x - decceleration * delta, 0)
@@ -105,16 +116,20 @@ func determineState():
 	sm.state = next_state
 	
 	
-func _on_hurt_box_damaged(attack: Attack, hit_vector: Vector2, amount: float, new_health: float) -> void:
-	if sm.state == "Hit":
-		var state: State = sm.get_state("Hit")
-		state.animated_sprite.frame = 0
-		state.__re_enter()
+func _on_hurt_box_damaged(attack: Attack, hit_vector: Vector2, _amount: float, new_health: float) -> void:
+	if new_health > 0.0:
+		if sm.state == "Hit":
+			var state: State = sm.get_state("Hit")
+			state.animated_sprite.frame = 0
+			state.__re_enter()
+		else:
+			
+			sm.state = "Hit"
+		velocity = hit_vector * attack.knockback * MAX_KNOCKBACK_VELOCITY
+		velocity.y /= 1.5
 	else:
+		sm.state = "Dying"
 		
-		sm.state = "Hit"
-	velocity = hit_vector * attack.knockback * MAX_KNOCKBACK_VELOCITY
-	velocity.y /= 1.5
 
 
 func determine_opponent_state():
@@ -137,3 +152,8 @@ func determine_opponent_state():
 	elif opponent_level < 0 and chasing:
 		direction = -1
 		
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if animated_sprite_2d.animation == "Dying":
+		queue_free() # Replace with function body.

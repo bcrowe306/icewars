@@ -14,5 +14,5 @@ func on_finished():
 	visible = false
 
 
-func _on_hit_box_hit_registered(target: Node) -> void:
+func _on_hit_box_hit_registered(_target: Node) -> void:
 	playAnimation() # Replace with function body.

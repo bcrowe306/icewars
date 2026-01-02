@@ -29,7 +29,7 @@ func enable_hurtbox() -> void:
 	monitoring = true	
 	for shape in collision_shapes:
 		if shape:
-			shape.disabled = false
+			shape.set_deferred("disabled", false)
 
 
 ## Disalbe the hurtbox to prevent it from taking damage.
@@ -37,7 +37,7 @@ func disable_hurtbox() -> void:
 	monitoring = false
 	for shape in collision_shapes:
 		if shape:
-			shape.disabled = true
+			shape.set_deferred("disabled", true)
 
 
 ## Takes damage from an attack, applying all attack properties.

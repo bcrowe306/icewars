@@ -6,7 +6,7 @@ const SMOKE_BURST = preload("res://Scenes/smoke_burst.tscn")
 @onready var player_controller: PlayerController = $"../.."
 
 
-func _on_hit_registered(target: Node) -> void:
+func _on_hit_registered(_target: Node) -> void:
 	stomp_attack.finish_attack()
 	var new_smoke_burst := SMOKE_BURST.instantiate()
 	new_smoke_burst.position = player_controller.position

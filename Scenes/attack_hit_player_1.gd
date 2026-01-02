@@ -20,31 +20,31 @@ func playHitSound():
 	play()
 
 
-func _on_player_attack_1_hitbox_hit_registered(target: Node) -> void:
+func _on_player_attack_1_hitbox_hit_registered(_target: Node) -> void:
 	playHitSound() 
 	attack_hit_thump.pitch_scale = randf_range(.9, 1.2)
 	attack_hit_thump.play()
 
 
-func _on_attack_2_hitbox_hit_registered(target: Node) -> void:
+func _on_attack_2_hitbox_hit_registered(_target: Node) -> void:
 	playHitSound() 
 	attack_hit_thump.pitch_scale = randf_range(.9, 1.2)
 	attack_hit_thump.play() 
 
 
-func _on_attack_3_hitbox_hit_registered(target: Node) -> void:
+func _on_attack_3_hitbox_hit_registered(_target: Node) -> void:
 	playHitSound() 
 	attack_hit_thump.pitch_scale = randf_range(.9, 1.2)
 	attack_hit_thump.play() 
 
 
-func _on_hit_box_hit_registered(target: Node) -> void:
+func _on_hit_box_hit_registered(_target: Node) -> void:
 	playHitSound() 
 	attack_hit_thump.pitch_scale = randf_range(.9, 1.2)
 	attack_hit_thump.play()  
 
 
-func _on_backflip_hit_hit_registered(target: Node) -> void:
+func _on_backflip_hit_hit_registered(_target: Node) -> void:
 	playHitSound() 
 	attack_hit_thump.pitch_scale = randf_range(.9, 1.2)
 	attack_hit_thump.play()   # Replace with function body.

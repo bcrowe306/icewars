@@ -7,10 +7,10 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
-func _enter(previous_state: String):
+func _enter(_previous_state: String):
 	animated_sprite.speed_scale = 1
 	animated_sprite.offset = Vector2(8,5)
 	animated_sprite.play(animation_name)
