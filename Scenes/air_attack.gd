@@ -35,7 +35,7 @@ func state_guard(_next_state: String) -> bool:
 func _on_player_animations_frame_changed() -> void:
 	if animated_sprite.animation == animation_name and active:
 		if animated_sprite.frame == 1:
-			jump_attack.do_attack(jump_attack.hit_vector)
+			jump_attack.do_attack(player_controller.generate_hit_vector( jump_attack.hit_vector) )
 			attack_1_weapon_sound.pitch_scale =  randf_range(.95, 1.05)
 			attack_1_weapon_sound.play()
 		if animated_sprite.frame == 4:

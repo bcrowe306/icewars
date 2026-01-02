@@ -1,8 +1,9 @@
-[gd_scene load_steps=399 format=3 uid="uid://m3pfvgme7sq8"]
+[gd_scene load_steps=423 format=3 uid="uid://m3pfvgme7sq8"]
 
 [ext_resource type="Script" uid="uid://3mh3j7cvvpta" path="res://Scenes/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://ccveosfb3f1fy" path="res://Assets/Graphics/Legacy-Fantasy - High Forest 2.3/Character/Dead/Dead-Sheet.png" id="3_yoq75"]
 [ext_resource type="Script" uid="uid://clyturl8n863q" path="res://Scenes/PlayerIdleState.gd" id="4_5ixxa"]
+[ext_resource type="Script" uid="uid://wxtrd853c6dy" path="res://Scenes/dust_particles.gd" id="5_867uf"]
 [ext_resource type="Texture2D" uid="uid://capm3jfapiwxu" path="res://Assets/PenguinSprites/Attack1_v2.png" id="5_fayk8"]
 [ext_resource type="Texture2D" uid="uid://ba2dswbgyubmt" path="res://Assets/PenguinSprites/Attack2.png" id="6_yrofn"]
 [ext_resource type="Texture2D" uid="uid://by540ro1eltgp" path="res://Assets/PenguinSprites/Attack3_v3.png" id="7_fayk8"]
@@ -34,6 +35,7 @@
 [ext_resource type="Script" uid="uid://d3cudw8tegmv6" path="res://Scenes/jump_2.gd" id="20_5v66d"]
 [ext_resource type="AudioStream" uid="uid://t2ojnwtvtugu" path="res://Assets/SFX/Cymatics - FX Essentials Impact 17.wav" id="21_wpo1r"]
 [ext_resource type="AudioStream" uid="uid://b15k5cq36kpwf" path="res://Assets/SFX/whoosh/whoosh_medium_04.wav" id="23_wosd6"]
+[ext_resource type="Script" uid="uid://c67t8m4dag3bm" path="res://Scenes/land_dust_anims.gd" id="24_6id3a"]
 [ext_resource type="Script" uid="uid://c2jxkkve7a8xe" path="res://Scenes/attack_3.gd" id="24_70hv0"]
 [ext_resource type="AudioStream" uid="uid://b40evgxt1hnq0" path="res://Assets/SFX/Custom/SFX- Vox-Female-05.wav" id="24_lyrkg"]
 [ext_resource type="AudioStream" uid="uid://cp1rif4akmds6" path="res://Assets/SFX/whoosh/whoosh_shortest_03.wav" id="25_rxg2u"]
@@ -87,6 +89,7 @@
 [ext_resource type="Script" uid="uid://ci3kuflg0ve5t" path="res://Scenes/charge_2.gd" id="80_ilb4b"]
 [ext_resource type="Texture2D" uid="uid://bg4hyajyp3y6e" path="res://Assets/Graphics/WindEffects/Dash_Wind_White_v1_spritesheet.png" id="83_dqj3d"]
 [ext_resource type="Script" uid="uid://el6h6rbat5qr" path="res://Scenes/icewave_blast.gd" id="84_f6yay"]
+[ext_resource type="AudioStream" uid="uid://dlgkwjaqsorg4" path="res://Assets/SFX/Carpet/Steps_carpet-005.ogg" id="89_6ilcf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rocfp"]
 radius = 19.0
@@ -177,6 +180,22 @@ animations = [{
 "name": &"default",
 "speed": 16.0
 }]
+
+[sub_resource type="Curve" id="Curve_867uf"]
+_data = [Vector2(0.0170455, 1), 0.0, 0.0, 0, 0, Vector2(0.9375, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_6ilcf"]
+offsets = PackedFloat32Array(0, 0.886667)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_6626w"]
+_data = [Vector2(0.0397727, 0.662921), 0.0, -1.78615, 0, 0, Vector2(1, 0.0674158), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_6626w"]
+offsets = PackedFloat32Array(0, 0.96)
+colors = PackedColorArray(0.91, 0.91, 0.91, 0.792157, 1, 1, 1, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ddly5"]
 atlas = ExtResource("5_fayk8")
@@ -1164,6 +1183,126 @@ animations = [{
 "loop": true,
 "name": &"Walk",
 "speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl07c"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vrji"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkgfc"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npost"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwr2h"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgxwv"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73uel"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar5v2"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t8bt"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hccqv"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6hnx"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t63f"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(1536, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny623"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(0, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8dnm"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(512, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgn0a"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(1024, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v11g0"]
+atlas = ExtResource("61_5gg6q")
+region = Rect2(1536, 1536, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsd1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl07c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vrji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkgfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npost")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwr2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgxwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73uel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar5v2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t8bt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hccqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6hnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t63f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny623")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8dnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgn0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v11g0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 60.0
 }]
 
 [sub_resource type="Curve" id="Curve_fvoow"]
@@ -2674,14 +2813,56 @@ sprite_frames = SubResource("SpriteFrames_ovjwc")
 frame = 3
 script = ExtResource("47_fvoow")
 
+[node name="DustParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 26)
+emitting = false
+amount = 100
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.6
+randomness = 0.8
+direction = Vector2(-1, -0.8)
+spread = 20.0
+gravity = Vector2(0, 480)
+initial_velocity_min = 141.42
+initial_velocity_max = 141.42
+scale_amount_curve = SubResource("Curve_867uf")
+color_ramp = SubResource("Gradient_6ilcf")
+script = ExtResource("5_867uf")
+
+[node name="PlayerTrailParticles" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.0117647)
+self_modulate = Color(1, 1, 1, 0.380392)
+amount = 1000
+texture = ExtResource("13_teras")
+lifetime = 0.3
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_6626w")
+color_ramp = SubResource("Gradient_6626w")
+
 [node name="PlayerAnimations" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("player_controller")]
 position = Vector2(0, -25)
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_52ee3")
-animation = &"Hit"
-frame_progress = 0.976396
+animation = &"Run"
+frame = 3
 script = ExtResource("9_ksbbd")
 player_controller = NodePath("..")
+
+[node name="LandDustAnims" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, 15)
+scale = Vector2(0.551821, 0.166208)
+sprite_frames = SubResource("SpriteFrames_gsd1x")
+frame = 15
+frame_progress = 1.0
+script = ExtResource("24_6id3a")
 
 [node name="Jump2Explosion" type="CPUParticles2D" parent="."]
 visible = false
@@ -2757,7 +2938,7 @@ metadata/_custom_type_script = "uid://b6784i8bvnb71"
 
 [node name="HumanSound" type="AudioStreamPlayer" parent="StateMachine/Jump"]
 stream = ExtResource("17_utwlt")
-volume_db = -5.622
+volume_db = -15.928
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="StateMachine/Jump"]
 stream = ExtResource("18_hkrn1")
@@ -3199,7 +3380,6 @@ flip_h = true
 script = ExtResource("62_wenux")
 
 [node name="PlayerStateLabel" type="Label" parent="."]
-visible = false
 offset_left = -15.0
 offset_top = -58.0
 offset_right = 25.0
@@ -3213,7 +3393,7 @@ damage = 30.0
 knockback = 1.0
 hitstop = 0.05
 camera_shake = 0.3
-hit_vector = Vector2(0, -1)
+hit_vector = Vector2(0.1, -1)
 metadata/_custom_type_script = "uid://cfgx3iomdgvm5"
 
 [node name="HitBox" type="Area2D" parent="JumpAttack"]
@@ -3291,6 +3471,9 @@ frame_progress = 1.0
 flip_h = true
 script = ExtResource("84_f6yay")
 
+[node name="LandSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("89_6ilcf")
+
 [connection signal="frame_changed" from="PlayerAnimations" to="PlayerAnimations" method="_on_frame_changed"]
 [connection signal="frame_changed" from="PlayerAnimations" to="StateMachine/Jump2" method="_on_player_animations_frame_changed"]
 [connection signal="frame_changed" from="PlayerAnimations" to="StateMachine/Attack1" method="_on_player_animations_frame_changed"]
@@ -3304,27 +3487,33 @@ script = ExtResource("84_f6yay")
 [connection signal="damaged" from="PlayerHurtBox" to="." method="_on_player_hurt_box_damaged"]
 [connection signal="attack_finished" from="Attack1" to="PlayerHurtBox" method="_on_attack_finished"]
 [connection signal="attack_started" from="Attack1" to="PlayerHurtBox" method="_on_attack_started"]
+[connection signal="attack_successful_hit" from="Attack1" to="." method="_on_attack_1_attack_successful_hit"]
 [connection signal="hit_registered" from="Attack1/PlayerAttack1Hitbox" to="AttackHitPlayer1" method="_on_player_attack_1_hitbox_hit_registered"]
 [connection signal="hit_registered" from="Attack1/PlayerAttack1Hitbox" to="HitDustAnimation" method="_on_player_attack_1_hitbox_hit_registered"]
 [connection signal="attack_finished" from="Attack2" to="PlayerHurtBox" method="_on_attack_finished"]
 [connection signal="attack_started" from="Attack2" to="PlayerHurtBox" method="_on_attack_started"]
+[connection signal="attack_successful_hit" from="Attack2" to="." method="_on_attack_2_attack_successful_hit"]
 [connection signal="hit_registered" from="Attack2/Attack2Hitbox" to="AttackHitPlayer1" method="_on_attack_2_hitbox_hit_registered"]
 [connection signal="hit_registered" from="Attack2/Attack2Hitbox" to="HitDustAnimation" method="_on_attack_2_hitbox_hit_registered"]
 [connection signal="attack_finished" from="Attack3" to="PlayerHurtBox" method="_on_attack_finished"]
 [connection signal="attack_started" from="Attack3" to="PlayerHurtBox" method="_on_attack_started"]
+[connection signal="attack_successful_hit" from="Attack3" to="." method="_on_attack_3_attack_successful_hit"]
 [connection signal="hit_registered" from="Attack3/Attack3Hitbox" to="AttackHitPlayer1" method="_on_attack_3_hitbox_hit_registered"]
 [connection signal="hit_registered" from="Attack3/Attack3Hitbox" to="HitDustAnimation" method="_on_attack_3_hitbox_hit_registered"]
 [connection signal="attack_finished" from="StompAttack" to="PlayerHurtBox" method="_on_attack_finished"]
 [connection signal="attack_started" from="StompAttack" to="PlayerHurtBox" method="_on_attack_started"]
+[connection signal="attack_successful_hit" from="StompAttack" to="." method="_on_stomp_attack_attack_successful_hit"]
 [connection signal="hit_registered" from="StompAttack/StompHitBox" to="." method="_on_stomp_hit_box_hit_registered"]
 [connection signal="hit_registered" from="StompAttack/StompHitBox" to="StompAttack/StompHitBox" method="_on_hit_registered"]
 [connection signal="attack_finished" from="JumpAttack" to="PlayerHurtBox" method="_on_attack_finished"]
 [connection signal="attack_started" from="JumpAttack" to="PlayerHurtBox" method="_on_attack_started"]
+[connection signal="attack_successful_hit" from="JumpAttack" to="." method="_on_jump_attack_attack_successful_hit"]
 [connection signal="hit_registered" from="JumpAttack/HitBox" to="AttackHitPlayer1" method="_on_hit_box_hit_registered"]
 [connection signal="hit_registered" from="JumpAttack/HitBox" to="HitDustAnimationAir" method="_on_hit_box_hit_registered"]
 [connection signal="animation_finished" from="WindFlury" to="WindFlury" method="_on_animation_finished"]
 [connection signal="attack_finished" from="BackflipKickAttack" to="PlayerHurtBox" method="_on_attack_finished"]
 [connection signal="attack_started" from="BackflipKickAttack" to="PlayerHurtBox" method="_on_attack_started"]
+[connection signal="attack_successful_hit" from="BackflipKickAttack" to="." method="_on_backflip_kick_attack_attack_successful_hit"]
 [connection signal="hit_registered" from="BackflipKickAttack/BackflipHit" to="AttackHitPlayer1" method="_on_backflip_hit_hit_registered"]
 [connection signal="hit_registered" from="BackflipKickAttack/BackflipHit" to="HitDustAnimation" method="_on_backflip_hit_hit_registered"]
 [connection signal="animation_finished" from="IcewaveBlast" to="IcewaveBlast" method="_on_animation_finished"]

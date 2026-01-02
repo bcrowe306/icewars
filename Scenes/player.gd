@@ -4,6 +4,8 @@ class_name PlayerController
 @onready var dash_particles_1: CPUParticles2D = $DashParticles1
 @onready var dash_particles_2: CPUParticles2D = $DashParticles2
 @onready var dash_explosion: CPUParticles2D = $DashExplosion
+@onready var land_sound_player: AudioStreamPlayer2D = $LandSoundPlayer
+@onready var land_dust_anims: AnimatedSprite2D = $LandDustAnims
 
 # Signals
 signal camera_shake(amount: float)
@@ -97,9 +99,12 @@ func _handleGravity(delta: float):
 	if not is_on_floor():
 		var gravity: Vector2 = get_gravity() * gravity_multiplier
 		if sm.state == "Fall":
-			gravity *= 1.6
+			gravity *= 1.8
 		velocity += gravity * delta
 	else:
+		if sm.state == "Fall":
+			land_sound_player.play()
+			land_dust_anims.playAnimation()
 		resetJumpCount()
 ## Perform a horizontal dash in the direction the player is facing. amount is int from 0-10
 func doDash(amount: int = 5):
@@ -218,35 +223,42 @@ func _on_stomp_hit_box_hit_registered(_target: Node) -> void:
 	doJump(false, 1.0)
 
 func _on_attack_1_attack_successful_hit(attack: Attack, _hit_vector: Vector2) -> void:
-	camera_shake.emit(attack.camera_shake)
+	CameraShakeManager2.apply_shake(attack.camera_shake)
 	attack_successful.emit(attack)
 
 
 func _on_attack_2_attack_successful_hit(attack: Attack, _hit_vector: Vector2) -> void:
-	camera_shake.emit(attack.camera_shake)
+	CameraShakeManager2.apply_shake(attack.camera_shake)
 	attack_successful.emit(attack)
 
 
 func _on_attack_3_attack_successful_hit(attack: Attack, _hit_vector: Vector2) -> void:
-	camera_shake.emit(attack.camera_shake)
+	CameraShakeManager2.apply_shake(attack.camera_shake)
 	attack_successful.emit(attack)
 
 
 func _on_stomp_attack_attack_successful_hit(attack: Attack, _hit_vector: Vector2) -> void:
-	camera_shake.emit(attack.camera_shake)
+	CameraShakeManager2.apply_shake(attack.camera_shake)
 	attack_successful.emit(attack)
 
 
 func _on_jump_attack_attack_successful_hit(attack: Attack, _hit_vector: Vector2) -> void:
-	camera_shake.emit(attack.camera_shake)
+	CameraShakeManager2.apply_shake(attack.camera_shake)
 	attack_successful.emit(attack)
 
 
 func _on_backflip_kick_attack_attack_successful_hit(attack: Attack, _hit_vector: Vector2) -> void:
-	camera_shake.emit(attack.camera_shake)
+	CameraShakeManager2.apply_shake(attack.camera_shake)
 	attack_successful.emit(attack)
 
 
 func _on_player_hurt_box_damaged(attack: Attack, _hit_vector: Vector2, _amount: float, _new_health: float) -> void:
 	HitstopManager.triggerHitstop(attack.hitstop)
 	sm.state = "Hit" # Replace with function body.
+
+
+func generate_hit_vector(attack_vector: Vector2) -> Vector2:
+	var new_vec: Vector2 = attack_vector
+	if not facing_direction:
+		new_vec.x = -abs((new_vec.x))
+	return new_vec

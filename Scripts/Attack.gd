@@ -9,6 +9,8 @@ signal attack_started
 ## Emitted when the attack has completed its recovery time.
 signal attack_finished
 
+signal attack_successful_hit(attack: Attack, hit_vector: Vector2)
+
 signal recovery_completed
 
 ## The name of this attack (e.g., "Jab", "Heavy Slash", "Fireball").
